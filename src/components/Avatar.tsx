@@ -6,7 +6,7 @@ export default function AvatarIcon() {
 		<Avatar
 			size={40}
 			name="Henrietta Swan"
-			variant="marble"
+			variant="beam"
 			colors={["#6F5846", "#A95A52", "#E35B5D", "#F18052", "#FFA446"]}
 		/>
 	);

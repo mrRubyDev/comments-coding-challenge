@@ -1,5 +1,27 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Avatar from "components/Avatar";
+import Icon from "components/Icon";
 export default function CommentInput() {
-	return <div className="comment-input"></div>;
+	const [iconColor, setIconColor] = useState("grey");
+	const [comment, setComment] = useState("");
+
+	return (
+		<div className="input-container">
+			<Avatar />
+			<div className="comment-input-container">
+				<textarea
+					placeholder="Type your comment here!"
+					className="comment-input"
+					onChange={e => setComment(e.target.value)}
+				/>
+				<div
+					id="send-icon"
+					onMouseEnter={() => setIconColor("black")}
+					onMouseLeave={() => setIconColor("grey")}
+				>
+					<Icon iconName="send" iconSize="2rem" iconColor={iconColor} />
+				</div>
+			</div>
+		</div>
+	);
 }
