@@ -1,0 +1,36 @@
+.navbar {
+	width: 100vw;
+	height: 6rem;
+	display: flex;
+	justify-content: center;
+}
+
+.navbar-container {
+	width: 70%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo-container {
+	height: 6rem;
+	width: 6rem;
+}
+
+.navbar-text-container {
+	display: flex;
+	width: 20%;
+	min-width: 13rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-text {
+	font-style: italic;
+}
+.navbar-text:hover {
+	cursor: pointer;
+	color: lightskyblue;
+	font-style: normal;
+}
