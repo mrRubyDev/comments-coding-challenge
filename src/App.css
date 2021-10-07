@@ -29,7 +29,8 @@
 }
 
 p,
-a {
+a,
+h4 {
 	font-size: large;
 	color: #21212b;
 	text-decoration: none;

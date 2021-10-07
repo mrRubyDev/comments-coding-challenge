@@ -6,11 +6,23 @@ export default function Navbar() {
 		<div className="navbar">
 			<div className="navbar-container">
 				<div className="logo-container">
-					<img src={Logo} alt="Inkitt" height="100%" width="100%" />
+					<a
+						href="https://inkitt.com"
+						target="_blank"
+						rel="noreferrer"
+						className="navbar-text"
+					>
+						<img src={Logo} alt="Inkitt" height="100%" width="100%" />
+					</a>
 				</div>
 				<div className="navbar-text-container">
 					<p className="navbar-text">Restart</p>
-					<a href="https://linkedin/in/mateorubinstein" className="navbar-text">
+					<a
+						href="https://linkedin/in/mateorubinstein"
+						target="_blank"
+						rel="noreferrer"
+						className="navbar-text"
+					>
 						More about me
 					</a>
 				</div>
