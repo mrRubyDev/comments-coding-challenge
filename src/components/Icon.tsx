@@ -7,12 +7,7 @@ import {
 	AiOutlineSend,
 } from "react-icons/ai";
 import { BsReplyAll } from "react-icons/bs";
-
-interface IconProps {
-	iconName: string;
-	iconSize: string;
-	iconColor: string;
-}
+import { IconProps } from "Types";
 
 export default function Icon({ iconName, iconSize, iconColor }: IconProps) {
 	if (iconName === "comments")

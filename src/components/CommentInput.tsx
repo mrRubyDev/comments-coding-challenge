@@ -10,11 +10,12 @@ export default function CommentInput() {
 			<Avatar />
 			<div className="comment-input-container">
 				<textarea
-					placeholder="Type your comment here!"
+					placeholder="Write your new comment here!"
 					className="comment-input"
 					onChange={e => setComment(e.target.value)}
 				/>
 				<div
+					onClick={() => alert(comment)}
 					id="send-icon"
 					onMouseEnter={() => setIconColor("black")}
 					onMouseLeave={() => setIconColor("grey")}

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Icon from "components/Icon";
+import { CommentsContext } from "App";
 
 export default function Header() {
+	const commentsCtx = useContext(CommentsContext).comments;
+	const length = Object.keys(commentsCtx).length;
 	return (
 		<div className="header">
 			<h4 style={{ fontSize: "1.3rem" }}>Comment section:</h4>
@@ -11,7 +14,7 @@ export default function Header() {
 					className="grey-text"
 					style={{ marginLeft: ".5rem", fontSize: ".8rem" }}
 				>
-					X comments
+					{length} comments
 				</p>
 			</div>
 		</div>
