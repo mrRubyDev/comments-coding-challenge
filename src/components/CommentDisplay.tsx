@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { CommentsContext } from "App";
+import React, { useContext, useState } from "react";
 import { CommentDisplayProps } from "Types";
 import AvatarIcon from "./Avatar";
 import CommentInput from "./CommentInput";
@@ -8,9 +9,11 @@ export default function CommentDisplay({
 	comment,
 	reply,
 }: CommentDisplayProps) {
+	const username = useContext(CommentsContext).username;
 	const [editHov, setEditHov] = useState(false);
 	const [replyHov, setReplyHov] = useState(false);
 	const [replyClicked, setReplyClicked] = useState(false);
+
 	return (
 		<>
 			<div
@@ -27,7 +30,9 @@ export default function CommentDisplay({
 
 					<div style={{ width: "100%", marginLeft: "1rem" }}>
 						<div className="username-container">
-							<p className="username">{comment.username} said:</p>
+							<p className="username">
+								{comment.username === username ? "You" : comment.username} said:
+							</p>
 						</div>
 						<p style={{ textAlign: "left", fontSize: "1rem" }}>
 							{comment.text}
@@ -43,28 +48,30 @@ export default function CommentDisplay({
 							marginTop: ".5rem",
 						}}
 					>
-						<div
-							className="inline-flex"
-							onMouseEnter={() => setEditHov(true)}
-							onMouseLeave={() => setEditHov(false)}
-							style={{ cursor: "pointer" }}
-							onClick={() => alert("Edit")}
-						>
-							<p
-								className="small-action-text"
-								style={{
-									color: editHov ? "lightskyblue" : "grey",
-									cursor: "pointer",
-								}}
+						{comment.username === username && (
+							<div
+								className="inline-flex"
+								onMouseEnter={() => setEditHov(true)}
+								onMouseLeave={() => setEditHov(false)}
+								style={{ cursor: "pointer" }}
+								onClick={() => alert("Edit")}
 							>
-								Edit
-							</p>
-							<Icon
-								iconName="edit"
-								iconColor={editHov ? "lightskyblue" : "grey"}
-								iconSize="1rem"
-							/>
-						</div>
+								<p
+									className="small-action-text"
+									style={{
+										color: editHov ? "lightskyblue" : "grey",
+										cursor: "pointer",
+									}}
+								>
+									Edit
+								</p>
+								<Icon
+									iconName="edit"
+									iconColor={editHov ? "lightskyblue" : "grey"}
+									iconSize="1rem"
+								/>
+							</div>
+						)}
 						<div
 							className="inline-flex"
 							style={{ marginLeft: "1rem", cursor: "pointer" }}

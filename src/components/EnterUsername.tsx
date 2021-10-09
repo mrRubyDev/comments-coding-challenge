@@ -1,11 +1,9 @@
 import { CommentsContext } from "App";
 import React, { useContext, useState } from "react";
-import { handleEnterPress } from "utils";
 
 export default function EnterUsername() {
 	const [username, setUsername] = useState("");
 	const updateUsername = useContext(CommentsContext).setUsername;
-	const handleKeyPress = (e: any) => handleEnterPress(e, updateUsername);
 	return (
 		<div>
 			<h3>Enter your username: </h3>
@@ -14,7 +12,6 @@ export default function EnterUsername() {
 				value={username}
 				className="input-style"
 				onChange={e => setUsername(e.target.value)}
-				onKeyPress={handleKeyPress}
 			/>
 			<button
 				style={{
