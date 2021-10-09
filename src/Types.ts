@@ -2,6 +2,7 @@ export interface CommentProps {
 	text: string;
 	replies: any;
 	date: string;
+	id: number;
 }
 
 export interface IconProps {
@@ -13,4 +14,9 @@ export interface IconProps {
 export interface CommentDisplayProps {
 	comment: CommentProps;
 	reply?: boolean;
+}
+
+export interface CommentInputProps {
+	replyTo?: any;
+	replied?: any;
 }

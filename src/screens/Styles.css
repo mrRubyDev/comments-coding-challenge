@@ -69,6 +69,10 @@
 	width: 100%;
 	margin-top: 1rem;
 }
+.reply {
+	width: 80%;
+	align-self: flex-end;
+}
 .comment-input-container {
 	display: flex;
 	width: 100%;

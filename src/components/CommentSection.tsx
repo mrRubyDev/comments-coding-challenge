@@ -6,7 +6,9 @@ export default function CommentSection() {
 
 	return (
 		<div className="comments-section" style={{ border: "none" }}>
-			<CommentDisplay comment={comments[0]} />
+			{Object.keys(comments)?.map((key, i) => (
+				<CommentDisplay comment={comments[key]} key={i} />
+			))}
 		</div>
 	);
 }

@@ -5,6 +5,7 @@ import {
 	AiOutlineArrowUp,
 	AiOutlineShareAlt,
 	AiOutlineSend,
+	AiOutlineEdit,
 } from "react-icons/ai";
 import { BsReplyAll } from "react-icons/bs";
 import { IconProps } from "Types";
@@ -20,5 +21,7 @@ export default function Icon({ iconName, iconSize, iconColor }: IconProps) {
 		return <AiOutlineArrowDown size={iconSize} color={iconColor} />;
 	else if (iconName === "share")
 		return <AiOutlineShareAlt size={iconSize} color={iconColor} />;
+	else if (iconName === "edit")
+		return <AiOutlineEdit size={iconSize} color={iconColor} />;
 	else return <BsReplyAll size={iconSize} color={iconColor} />;
 }

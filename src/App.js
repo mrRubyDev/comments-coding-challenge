@@ -6,21 +6,23 @@ const DEMO_COMMENTS = {
 	0: {
 		text: "Hello, this is the first comment!",
 		date: "Jul 12, 2021",
-		replies: {
-			0: {
+		id: 0,
+		replies: [
+			{
 				text: "Hi, this is my first reply.",
 				date: "Jul 13, 2021",
 			},
-			1: {
+			{
 				text: "Hi, this is our second reply.",
 				date: "Jul 14, 2021",
 			},
-		},
+		],
 	},
 	1: {
 		text: "Hello, this is the second main comment!",
-		replies: {},
+		replies: [],
 		date: "Jul 14, 2021",
+		id: 1,
 	},
 };
 
@@ -28,17 +30,15 @@ export const CommentsContext = createContext();
 
 function App() {
 	const [comments, setComments] = useState(DEMO_COMMENTS);
+
 	const handleNewComment = (newId, commentBody, addTo) => {
+		const cmmt = { ...comments };
 		if (addTo) {
-			setComments({
-				...comments,
-				addTo: {
-					...comments.addTo,
-					replies: { ...comments.addTo.replies, newId: commentBody },
-				},
-			});
+			cmmt[addTo].replies.push(commentBody);
+			setComments(cmmt);
 		} else {
-			setComments({ ...comments, newId: commentBody });
+			cmmt[newId] = commentBody;
+			setComments(cmmt);
 		}
 	};
 	return (

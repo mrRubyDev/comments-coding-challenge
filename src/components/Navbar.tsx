@@ -16,9 +16,11 @@ export default function Navbar() {
 					</a>
 				</div>
 				<div className="navbar-text-container">
-					<p className="navbar-text">Restart</p>
+					<p className="navbar-text" onClick={() => window.location.reload()}>
+						Restart
+					</p>
 					<a
-						href="https://linkedin/in/mateorubinstein"
+						href="https://www.linkedin.com/in/mateorubinstein/"
 						target="_blank"
 						rel="noreferrer"
 						className="navbar-text"

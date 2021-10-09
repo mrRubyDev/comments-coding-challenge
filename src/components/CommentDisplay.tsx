@@ -1,75 +1,99 @@
 import React, { useState } from "react";
 import { CommentDisplayProps } from "Types";
 import AvatarIcon from "./Avatar";
+import CommentInput from "./CommentInput";
 import Icon from "./Icon";
 
 export default function CommentDisplay({
 	comment,
 	reply,
 }: CommentDisplayProps) {
-	const [shareHov, setShareHov] = useState(false);
+	const [editHov, setEditHov] = useState(false);
 	const [replyHov, setReplyHov] = useState(false);
+	const [replyClicked, setReplyClicked] = useState(false);
 	return (
-		<div style={{ width: reply ? "80%" : "100%" }}>
-			<div className="comment-container">
-				<AvatarIcon />
-
-				<div style={{ width: "100%", marginLeft: "1rem" }}>
-					<p style={{ textAlign: "left", fontSize: "1rem" }}>{comment.text}</p>
-				</div>
-			</div>
+		<>
 			<div
-				className="inline-flex"
 				style={{
 					width: "100%",
-					justifyContent: "flex-end",
-					marginTop: ".5rem",
+					minHeight: "4rem",
 				}}
 			>
 				<div
-					className="inline-flex"
-					onMouseEnter={() => setShareHov(true)}
-					onMouseLeave={() => setShareHov(false)}
-					style={{ cursor: "pointer" }}
-					onClick={() => alert("Share")}
+					className="comment-container"
+					style={{ marginLeft: reply ? "10%" : "none" }}
 				>
-					<p
-						className="small-action-text"
+					<AvatarIcon />
+
+					<div style={{ width: "100%", marginLeft: "1rem" }}>
+						<p style={{ textAlign: "left", fontSize: "1rem" }}>
+							{comment.text}
+						</p>
+					</div>
+				</div>
+				{!reply ? (
+					<div
+						className="inline-flex"
 						style={{
-							color: shareHov ? "lightskyblue" : "grey",
-							cursor: "pointer",
+							width: "100%",
+							justifyContent: "flex-end",
+							marginTop: ".5rem",
 						}}
 					>
-						Share
-					</p>
-					<Icon
-						iconName="share"
-						iconColor={shareHov ? "lightskyblue" : "grey"}
-						iconSize="1rem"
-					/>
-				</div>
-				<div
-					className="inline-flex"
-					style={{ marginLeft: "0.5rem", cursor: "pointer" }}
-					onMouseEnter={() => setReplyHov(true)}
-					onMouseLeave={() => setReplyHov(false)}
-					onClick={() => alert("reply")}
-				>
-					<p
-						className="small-action-text"
-						style={{
-							color: replyHov ? "lightskyblue" : "grey",
-						}}
-					>
-						Reply
-					</p>
-					<Icon
-						iconName="reply"
-						iconColor={replyHov ? "lightskyblue" : "grey"}
-						iconSize="1rem"
-					/>
-				</div>
+						<div
+							className="inline-flex"
+							onMouseEnter={() => setEditHov(true)}
+							onMouseLeave={() => setEditHov(false)}
+							style={{ cursor: "pointer" }}
+							onClick={() => alert("Edit")}
+						>
+							<p
+								className="small-action-text"
+								style={{
+									color: editHov ? "lightskyblue" : "grey",
+									cursor: "pointer",
+								}}
+							>
+								Edit
+							</p>
+							<Icon
+								iconName="edit"
+								iconColor={editHov ? "lightskyblue" : "grey"}
+								iconSize="1rem"
+							/>
+						</div>
+						<div
+							className="inline-flex"
+							style={{ marginLeft: "1rem", cursor: "pointer" }}
+							onMouseEnter={() => setReplyHov(true)}
+							onMouseLeave={() => setReplyHov(false)}
+							onClick={() => setReplyClicked(true)}
+						>
+							<p
+								className="small-action-text"
+								style={{
+									color: replyHov ? "lightskyblue" : "grey",
+								}}
+							>
+								Reply
+							</p>
+							<Icon
+								iconName="reply"
+								iconColor={replyHov ? "lightskyblue" : "grey"}
+								iconSize="1rem"
+							/>
+						</div>
+					</div>
+				) : null}
 			</div>
-		</div>
+			{!comment.replies
+				? null
+				: Object.keys(comment.replies).map((cmt, i) => (
+						<CommentDisplay comment={comment.replies[cmt]} key={i} reply />
+				  ))}
+			{replyClicked && (
+				<CommentInput replyTo={comment.id} replied={setReplyClicked} />
+			)}
+		</>
 	);
 }
