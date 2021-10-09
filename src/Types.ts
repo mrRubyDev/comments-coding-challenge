@@ -3,6 +3,7 @@ export interface CommentProps {
 	replies: any;
 	date: string;
 	id: number;
+	username: string;
 }
 
 export interface IconProps {

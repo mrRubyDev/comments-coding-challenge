@@ -7,14 +7,17 @@ const DEMO_COMMENTS = {
 		text: "Hello, this is the first comment!",
 		date: "Jul 12, 2021",
 		id: "0",
+		username: "@mateo_rubinstein",
 		replies: [
 			{
 				text: "Hi, this is my first reply.",
 				date: "Jul 13, 2021",
+				username: "@JohnDoe",
 			},
 			{
 				text: "Hi, this is our second reply.",
 				date: "Jul 14, 2021",
+				username: "@UsainBolt",
 			},
 		],
 	},
@@ -23,6 +26,7 @@ const DEMO_COMMENTS = {
 		replies: [],
 		date: "Jul 14, 2021",
 		id: "1",
+		username: "@ArthurMorgan",
 	},
 };
 

@@ -26,6 +26,9 @@ export default function CommentDisplay({
 					<AvatarIcon />
 
 					<div style={{ width: "100%", marginLeft: "1rem" }}>
+						<div className="username-container">
+							<p className="username">{comment.username} said:</p>
+						</div>
 						<p style={{ textAlign: "left", fontSize: "1rem" }}>
 							{comment.text}
 						</p>
