@@ -2,6 +2,7 @@ import "App.css";
 import Main from "screens/Main";
 import Setup from "screens/Setup";
 import { createContext, useEffect, useState } from "react";
+import "screens/Styles.css";
 
 const DEMO_COMMENTS = {
 	0: {

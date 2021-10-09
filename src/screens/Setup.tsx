@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "media/inkitt-logo-white.png";
+import EnterUsername from "components/EnterUsername";
 
 export default function Setup() {
 	return (
@@ -14,6 +15,7 @@ export default function Setup() {
 					<img src={Logo} alt="Inkitt" height="100%" width="100%" />
 				</a>
 			</div>
+			<EnterUsername />
 		</div>
 	);
 }

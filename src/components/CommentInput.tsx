@@ -3,10 +3,16 @@ import Avatar from "components/Avatar";
 import Icon from "components/Icon";
 import { CommentsContext } from "App";
 import { CommentInputProps } from "Types";
+
+import { handleEnterPress } from "utils";
+
 export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 	const [iconColor, setIconColor] = useState("grey");
 	const [comment, setComment] = useState("");
-	const addComment = useContext(CommentsContext).handleNewComment;
+	const context = useContext(CommentsContext);
+	const addComment = context.handleNewComment;
+	const username = context.username;
+
 	const handleNewCmmt = () => {
 		const id = `${new Date().getTime()}`;
 
@@ -15,6 +21,7 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 			{
 				text: comment,
 				date: new Date().toISOString,
+				username,
 				replies: [],
 				id,
 			},
@@ -23,6 +30,8 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 		replyTo && replied(false);
 		setComment("");
 	};
+
+	const handleKeyPress = (e: any) => handleEnterPress(e, handleNewCmmt);
 
 	return (
 		<div className={!replyTo ? "input-container" : "input-container reply"}>
@@ -35,6 +44,7 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 					value={comment}
 					className="comment-input"
 					onChange={e => setComment(e.target.value)}
+					onKeyPress={handleKeyPress}
 				/>
 				<div
 					onClick={handleNewCmmt}
