@@ -8,17 +8,17 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 	const [comment, setComment] = useState("");
 	const addComment = useContext(CommentsContext).handleNewComment;
 	const handleNewCmmt = () => {
-		const id = new Date().getTime();
+		const id = `${new Date().getTime()}`;
 
 		addComment(
 			id,
 			{
 				text: comment,
 				date: new Date().toISOString,
-				replies: {},
+				replies: [],
 				id,
 			},
-			replyTo ? replyTo : null
+			replyTo ? `${replyTo}` : null
 		);
 		replyTo && replied(false);
 		setComment("");
@@ -32,6 +32,7 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 					placeholder={
 						!replyTo ? "Write your new comment here!" : "Write your reply here!"
 					}
+					value={comment}
 					className="comment-input"
 					onChange={e => setComment(e.target.value)}
 				/>

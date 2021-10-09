@@ -3,8 +3,7 @@ import Icon from "components/Icon";
 import { CommentsContext } from "App";
 
 export default function Header() {
-	const commentsCtx = useContext(CommentsContext).comments;
-	const length = Object.keys(commentsCtx).length;
+	const length = useContext(CommentsContext).commentCount;
 	return (
 		<div className="header">
 			<h4 style={{ fontSize: "1.3rem" }}>Comment section:</h4>
