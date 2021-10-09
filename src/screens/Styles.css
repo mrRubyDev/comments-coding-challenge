@@ -90,6 +90,19 @@
 	resize: none;
 }
 
+.comment-container {
+	width: 100%;
+	min-height: 5vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.small-action-text {
+	font-size: 0.8rem;
+	margin-right: 0.4rem;
+}
+
 #send-icon {
 	width: 5%;
 	height: 100%;

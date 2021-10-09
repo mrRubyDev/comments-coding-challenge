@@ -9,3 +9,8 @@ export interface IconProps {
 	iconSize: string;
 	iconColor: string;
 }
+
+export interface CommentDisplayProps {
+	comment: CommentProps;
+	reply?: boolean;
+}

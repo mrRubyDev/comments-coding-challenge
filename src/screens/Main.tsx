@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "components/Navbar";
 import CommentInput from "components/CommentInput";
 import Header from "components/Header";
+import CommentSection from "components/CommentSection";
 export default function Main() {
 	return (
 		<div className="full-screen">
@@ -11,6 +12,7 @@ export default function Main() {
 				<Header />
 				<CommentInput />
 			</div>
+			<CommentSection />
 		</div>
 	);
 }
