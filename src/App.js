@@ -1,5 +1,6 @@
-import "./App.css";
-import Main from "./screens/Main";
+import "App.css";
+import Main from "screens/Main";
+import Setup from "screens/Setup";
 import { createContext, useEffect, useState } from "react";
 
 const DEMO_COMMENTS = {
@@ -35,6 +36,7 @@ export const CommentsContext = createContext();
 function App() {
 	const [comments, setComments] = useState(DEMO_COMMENTS);
 	const [commentCount, setCommentCount] = useState(0);
+	const [username, setUsername] = useState("");
 
 	useEffect(() => {
 		if (comments) {
@@ -57,13 +59,18 @@ function App() {
 			setComments(cmmt);
 		}
 	};
+
+	const store = {
+		comments,
+		handleNewComment,
+		commentCount,
+		username,
+		setUsername,
+	};
+
 	return (
-		<CommentsContext.Provider
-			value={{ comments, handleNewComment, commentCount }}
-		>
-			<div className="App">
-				<Main />
-			</div>
+		<CommentsContext.Provider value={store}>
+			<div className="App">{username.length ? <Main /> : <Setup />}</div>
 		</CommentsContext.Provider>
 	);
 }

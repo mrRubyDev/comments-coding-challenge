@@ -27,6 +27,10 @@
 	height: 6rem;
 	width: 6rem;
 }
+.big-logo-container {
+	height: 14rem;
+	width: 14rem;
+}
 
 .navbar-text-container {
 	display: flex;
