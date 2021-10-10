@@ -18,13 +18,18 @@ export default function CommentDisplay({
 			<div
 				style={{
 					width: "100%",
+					maxWidth: "100%",
 					minHeight: "4rem",
 				}}
 			>
 				<div
 					className="comment-container"
 					style={{
-						marginLeft: reply ? `${comment.parents.length * 2}rem` : "none",
+						marginLeft: reply
+							? comment.parents.length * 4 < 60
+								? `${comment.parents.length * 4}%`
+								: "60%"
+							: "none",
 					}}
 				>
 					<AvatarIcon username={comment.username} />
