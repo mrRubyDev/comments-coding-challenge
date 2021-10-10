@@ -77,7 +77,7 @@ export default function CommentDisplay({
 				  ))}
 			{replyClicked && (
 				<CommentInput
-					replyTo={[...comment.parents, comment.id]}
+					replyTo={[...comment.parents, +comment.id]}
 					replied={setReplyClicked}
 				/>
 			)}

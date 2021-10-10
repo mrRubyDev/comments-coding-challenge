@@ -13,17 +13,14 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 
 	const handleNewCmmt = () => {
 		const id = `${new Date().getTime()}`;
-		handleNewComment(
+		handleNewComment(id, {
+			text: comment,
+			date: new Date().toISOString,
+			username,
+			replies: [],
 			id,
-			{
-				text: comment,
-				date: new Date().toISOString,
-				username,
-				replies: [],
-				id,
-			},
-			replyTo ? replyTo : null
-		);
+			parents: replyTo ? [...replyTo] : [],
+		});
 		replyTo && replied(false);
 		setComment("");
 	};

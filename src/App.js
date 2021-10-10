@@ -20,7 +20,7 @@ const DEMO_COMMENTS = {
 				parents: [0],
 				replies: [
 					{
-						text: "Hi, this is my first reply.",
+						text: "Hi, this is my first reply to my first reply.",
 						date: "Jul 13, 2021",
 						username: "@JohnDoe",
 						id: "3",
@@ -56,26 +56,41 @@ function App() {
 	const [commentCount, setCommentCount] = useState(0);
 	const [username, setUsername] = useState("");
 
+	const getReplyCount = comment => {
+		if (!comment.replies.length) {
+			return 0;
+		}
+		let replies = comment.replies.length;
+		for (let reply of comment.replies) {
+			replies += getReplyCount(reply);
+		}
+		return replies;
+	};
+
+	const addReply = (parents, cmmts, body) => {
+		let comment = cmmts[parents[0]];
+		for (let i = 1; i < parents.length; i++) {
+			comment = comment.replies.find(cmmt => +cmmt.id === +parents[i]);
+		}
+		comment.replies.push(body);
+		return cmmts;
+	};
+
 	useEffect(() => {
 		if (comments) {
 			let count = Object.keys(comments).length;
 			for (let comment in comments) {
-				if (comments[comment].replies?.length)
-					count += comments[comment].replies.length;
+				count = count + getReplyCount(comments[comment]);
 			}
 			setCommentCount(count);
 		}
 	}, [comments]);
 
-	const handleNewComment = (newId, commentBody, addTo) => {
+	const handleNewComment = (newId, commentBody) => {
 		const cmmt = { ...comments };
-		if (addTo) {
-			let comment = cmmt;
-			for (let i in addTo) {
-				comment = comment[i];
-			}
-			cmmt[addTo].replies.push(commentBody);
-			setComments(cmmt);
+		if (commentBody.parents?.length) {
+			const newComments = addReply(commentBody.parents, cmmt, commentBody);
+			setComments(newComments);
 		} else {
 			cmmt[newId] = commentBody;
 			setComments(cmmt);
