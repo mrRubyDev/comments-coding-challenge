@@ -29,7 +29,7 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 
 	return (
 		<div className={!replyTo ? "input-container" : "input-container reply"}>
-			<Avatar />
+			<Avatar username={username} />
 			<div className="comment-input-container">
 				<textarea
 					placeholder={

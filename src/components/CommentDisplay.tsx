@@ -27,7 +27,7 @@ export default function CommentDisplay({
 						marginLeft: reply ? `${comment.parents.length * 2}rem` : "none",
 					}}
 				>
-					<AvatarIcon />
+					<AvatarIcon username={comment.username} />
 					<div style={{ width: "100%", marginLeft: "1rem" }}>
 						<div className="username-container">
 							<p className="username">

@@ -22,3 +22,7 @@ export interface CommentInputProps {
 	replyTo?: any;
 	replied?: any;
 }
+
+export interface AvatarIconProps {
+	username: string;
+}
