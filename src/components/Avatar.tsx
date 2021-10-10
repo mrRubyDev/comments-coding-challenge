@@ -9,7 +9,7 @@ export default function AvatarIcon({ username }: AvatarIconProps) {
 			size={40}
 			name={username}
 			variant="beam"
-			colors={["#6F5846", "#A95A52", "#E35B5D", "#F18052", "#FFA446"]}
+			colors={["#A3A948", "#EDB92E", "#F85931", "#CE1836", "#009989"]}
 		/>
 	);
 }

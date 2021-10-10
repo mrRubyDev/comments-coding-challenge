@@ -22,7 +22,7 @@ const DEMO_COMMENTS = {
 					{
 						text: "Hi, this is my first reply to my first reply.",
 						date: "Jul 13, 2021",
-						username: "@JohnDoe",
+						username: "@AllisonCourt",
 						id: "3",
 						replies: [],
 						parents: [0, 2],
