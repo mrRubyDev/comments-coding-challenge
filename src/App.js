@@ -10,16 +10,32 @@ const DEMO_COMMENTS = {
 		date: "Jul 12, 2021",
 		id: "0",
 		username: "@mateo_rubinstein",
+		parents: [],
 		replies: [
 			{
 				text: "Hi, this is my first reply.",
 				date: "Jul 13, 2021",
 				username: "@JohnDoe",
+				id: "2",
+				parents: [0],
+				replies: [
+					{
+						text: "Hi, this is my first reply.",
+						date: "Jul 13, 2021",
+						username: "@JohnDoe",
+						id: "3",
+						replies: [],
+						parents: [0, 2],
+					},
+				],
 			},
 			{
 				text: "Hi, this is our second reply.",
 				date: "Jul 14, 2021",
 				username: "@UsainBolt",
+				id: "4",
+				parents: [0],
+				replies: [],
 			},
 		],
 	},
@@ -28,6 +44,7 @@ const DEMO_COMMENTS = {
 		replies: [],
 		date: "Jul 14, 2021",
 		id: "1",
+		parents: [],
 		username: "@ArthurMorgan",
 	},
 };
@@ -53,6 +70,10 @@ function App() {
 	const handleNewComment = (newId, commentBody, addTo) => {
 		const cmmt = { ...comments };
 		if (addTo) {
+			let comment = cmmt;
+			for (let i in addTo) {
+				comment = comment[i];
+			}
 			cmmt[addTo].replies.push(commentBody);
 			setComments(cmmt);
 		} else {

@@ -4,6 +4,7 @@ export interface CommentProps {
 	date: string;
 	id: number;
 	username: string;
+	parents: any;
 }
 
 export interface IconProps {

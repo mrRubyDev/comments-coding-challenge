@@ -9,14 +9,11 @@ import { handleEnterPress } from "utils";
 export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 	const [iconColor, setIconColor] = useState("grey");
 	const [comment, setComment] = useState("");
-	const context = useContext(CommentsContext);
-	const addComment = context.handleNewComment;
-	const username = context.username;
+	const { handleNewComment, username } = useContext(CommentsContext);
 
 	const handleNewCmmt = () => {
 		const id = `${new Date().getTime()}`;
-
-		addComment(
+		handleNewComment(
 			id,
 			{
 				text: comment,
@@ -25,7 +22,7 @@ export default function CommentInput({ replyTo, replied }: CommentInputProps) {
 				replies: [],
 				id,
 			},
-			replyTo ? `${replyTo}` : null
+			replyTo ? replyTo : null
 		);
 		replyTo && replied(false);
 		setComment("");
