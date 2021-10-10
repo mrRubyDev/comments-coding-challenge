@@ -7,7 +7,7 @@ export default function Navbar() {
 			<div className="navbar-container">
 				<div className="logo-container">
 					<a
-						href="https://inkitt.com"
+						href="https://www.inkitt.com/"
 						target="_blank"
 						rel="noreferrer"
 						className="navbar-text"
