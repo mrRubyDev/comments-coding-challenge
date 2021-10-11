@@ -1,5 +1,5 @@
 import "App.css";
-import "./styles.css";
+import "Styles.css";
 import Main from "screens/Main";
 import Setup from "screens/Setup";
 import SplashScreen from "screens/SplashScreen";
@@ -60,17 +60,6 @@ function App() {
 
 	useEffect(() => setTimeout(() => setSplash(false), 3000), []);
 
-	//Recursiveness to get the amount of comments
-	const getReplyCount = comment => {
-		if (!comment.replies.length) {
-			return 0;
-		}
-		let replies = comment.replies.length;
-		for (let reply of comment.replies) {
-			replies += getReplyCount(reply);
-		}
-		return replies;
-	};
 	//Adds a reply by finding the right comment to add to in case it's nested.
 	const addReply = (parents, cmmts, body) => {
 		let comment = cmmts[parents[0]];
@@ -83,6 +72,17 @@ function App() {
 
 	useEffect(() => {
 		if (comments) {
+			//Recursiveness to get the amount of comments
+			const getReplyCount = comment => {
+				if (!comment.replies.length) {
+					return 0;
+				}
+				let replies = comment.replies.length;
+				for (let reply of comment.replies) {
+					replies += getReplyCount(reply);
+				}
+				return replies;
+			};
 			let count = Object.keys(comments).length;
 			for (let comment in comments) {
 				count = count + getReplyCount(comments[comment]);
