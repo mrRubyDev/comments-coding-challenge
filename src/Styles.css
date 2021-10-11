@@ -11,7 +11,11 @@
 	border-radius: 5px;
 	border: none;
 }
-
+#splash-img {
+	height: 20rem;
+	width: 20rem;
+	animation: bounceIn 1.5s ease normal forwards;
+}
 .navbar {
 	width: 100vw;
 	height: 6rem;
@@ -142,4 +146,48 @@
 
 #send-icon:hover {
 	cursor: pointer;
+}
+
+@keyframes bounceIn {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
 }

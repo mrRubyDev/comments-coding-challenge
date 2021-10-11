@@ -1,8 +1,9 @@
 import "App.css";
+import "./styles.css";
 import Main from "screens/Main";
 import Setup from "screens/Setup";
+import SplashScreen from "screens/SplashScreen";
 import { createContext, useEffect, useState } from "react";
-import "screens/Styles.css";
 
 const DEMO_COMMENTS = {
 	0: {
@@ -55,7 +56,11 @@ function App() {
 	const [comments, setComments] = useState(DEMO_COMMENTS);
 	const [commentCount, setCommentCount] = useState(0);
 	const [username, setUsername] = useState("");
+	const [splash, setSplash] = useState(true);
 
+	useEffect(() => setTimeout(() => setSplash(false), 3000), []);
+
+	//Recursiveness to get the amount of comments
 	const getReplyCount = comment => {
 		if (!comment.replies.length) {
 			return 0;
@@ -66,7 +71,7 @@ function App() {
 		}
 		return replies;
 	};
-
+	//Adds a reply by finding the right comment to add to in case it's nested.
 	const addReply = (parents, cmmts, body) => {
 		let comment = cmmts[parents[0]];
 		for (let i = 1; i < parents.length; i++) {
@@ -107,7 +112,9 @@ function App() {
 
 	return (
 		<CommentsContext.Provider value={store}>
-			<div className="App">{username.length ? <Main /> : <Setup />}</div>
+			<div className="App">
+				{splash ? <SplashScreen /> : username.length ? <Main /> : <Setup />}
+			</div>
 		</CommentsContext.Provider>
 	);
 }

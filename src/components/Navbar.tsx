@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "media/inkitt-logo.png";
+import { CommentsContext } from "App";
 
 export default function Navbar() {
+	const { setUsername } = useContext(CommentsContext);
 	return (
 		<div className="navbar">
 			<div className="navbar-container">
@@ -16,7 +18,7 @@ export default function Navbar() {
 					</a>
 				</div>
 				<div className="navbar-text-container">
-					<p className="navbar-text" onClick={() => window.location.reload()}>
+					<p className="navbar-text" onClick={() => setUsername("")}>
 						Restart
 					</p>
 					<a
